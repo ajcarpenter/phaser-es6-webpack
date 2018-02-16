@@ -39,11 +39,19 @@ module.exports = {
   ],
   module: {
     rules: [
+      { 
+        test: /\.(glsl|frag|vert)$/, 
+        use: [
+          'raw-loader',
+          'glslify-loader'
+        ], 
+        include: path.join(__dirname, 'node_modules/phaser/src/renderer/webgl/shaders')
+      },
       {
         test: /\.js$/,
         use: ['babel-loader'],
         include: path.join(__dirname, 'src')
-      }
+      },
     ]
   }
 }
